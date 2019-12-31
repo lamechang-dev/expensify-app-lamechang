@@ -19,17 +19,6 @@ import {
 
 const store = configureStore();
 
-store.subscribe(() => {
-  const state = store.getState();
-  const visibleExpenses = getVisibleExpenses(state.expenses, state.filters);
-  // getState() でアプリケーションの状態ツリーを返す。
-  console.log(visibleExpenses);
-});
-
-store.dispatch(addExpense({ description: "Water Bill", amount: 4500, note: "text" }));
-store.dispatch(addExpense({ description: "Gas Bill", createdAt: 1000 }));
-store.dispatch(addExpense({ description: "Water bill", amount: 109500 }));
-
 const jsx = (
   <Provider store={store}>
     <AppRouter></AppRouter>
