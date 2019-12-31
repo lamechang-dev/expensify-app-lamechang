@@ -8,6 +8,7 @@ import expensesReducers from "./reducers/expenses";
 import filtersReducers from "./reducers/filters";
 import "normalize.css/normalize.css";
 import "./styles/styles.scss";
+import "react-dates/lib/css/_datepicker.css";
 import { addExpense, removeExpense, editExpense } from "./actions/expenses";
 import {
   setTextFilter,
