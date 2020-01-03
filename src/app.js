@@ -17,6 +17,7 @@ import {
   setStartDate,
   setEndDate
 } from "./actions/filters";
+import "./firebase/firebase";
 
 const store = configureStore();
 
