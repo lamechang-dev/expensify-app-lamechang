@@ -43,10 +43,10 @@
     "uuid": "3.1.0",
     "validator": "8.0.0",
     "webpack": "^4.41.2",
-    "webpack-cli": "^3.3.10"
+    "webpack-cli": "^3.3.10",
+    "serve": "live-server public/"
   },
   "devDependencies": {
-    "serve": "live-server public/",
     "webpack-dev-server": "^3.9.0"
   }
 }
