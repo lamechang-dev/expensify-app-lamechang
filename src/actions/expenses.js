@@ -1,6 +1,5 @@
 import uuid from "uuid";
 import database from "../firebase/firebase";
-import thunk from "redux-thunk";
 
 //component calls action generator
 // action generator returns object
@@ -19,7 +18,8 @@ export const addExpense = expense => ({
 });
 
 export const startAddExpense = expenseData => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     const {
       description = "",
       note = "",
@@ -29,7 +29,7 @@ export const startAddExpense = expenseData => {
     const expense = { description, note, amount, createdAt };
 
     database
-      .ref("expenses")
+      .ref(`users/${uid}/expenses`)
       .push(expense)
       .then(ref => {
         dispatch(
@@ -74,12 +74,12 @@ export const startEditExpense = (
   id,
   { amount, createdAt, description, note }
 ) => {
-  return dispatch => {
-    const idToEdit = id;
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     const expense = { amount, createdAt, description, note };
     database
-      .ref("expenses")
-      .child(idToEdit)
+      .ref(`users/${uid}/expenses/`)
+      .child(id)
       .update({
         amount: amount,
         createdAt: createdAt,
@@ -87,7 +87,7 @@ export const startEditExpense = (
         note: note
       })
       .then(() => {
-        dispatch(editExpense(idToEdit, expense));
+        dispatch(editExpense(id, expense));
       });
   };
 };
@@ -99,9 +99,10 @@ export const setExpenses = expenses => ({
   expenses
 });
 export const startSetExpenses = () => {
-  return dispatch => {
+  return (dispatch, getState) => {
+    const uid = getState().auth.uid;
     return database
-      .ref("expenses")
+      .ref(`users/${uid}/expenses`)
       .once("value")
       .then(snapshot => {
         const expenses = [];
