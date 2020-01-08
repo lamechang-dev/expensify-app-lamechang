@@ -6,12 +6,14 @@ import React from "react";
 import { connect } from "react-redux";
 import { removeExpense } from "../actions/expenses";
 import { BrowserRouter, Route, Switch, Link, NavLink } from "react-router-dom";
+import numeral from "numeral";
 
 const ExpenseListItem = ({ dispatch, description, amount, createdAt, id }) => (
   <div>
     <Link to={`/edit/${id}`}>{description}</Link>
     <p>
-      {"$" + amount / 100} - {moment(createdAt).format("MMM Do, YYYY")}
+      {numeral(amount / 100).format("$0,0.00")} -{" "}
+      {moment(createdAt).format("MMM Do, YYYY")}
     </p>
   </div>
 );

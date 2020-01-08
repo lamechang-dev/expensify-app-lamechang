@@ -4,15 +4,20 @@ import { connect } from "react-redux";
 import { startLogout } from "../actions/auth";
 
 export const Header = ({ startLogout }) => (
-  <header>
-    <h1>Expensify</h1>
-    <NavLink to="/dashboard" activeClassName="is-active" exact={true}>
-      Dashboard
-    </NavLink>
-    <NavLink to="/create" activeClassName="is-active">
-      Create Expense
-    </NavLink>
-    <button onClick={startLogout}>Logout</button>
+  <header className="header">
+    <div className="content-container">
+      <div className="header__content">
+        <NavLink
+          to="/dashboard"
+          className="header__title"
+          activeClassName="is-active"
+          exact={true}
+        >
+          <h1>Expensify</h1>
+        </NavLink>
+        <button onClick={startLogout}>Logout</button>
+      </div>
+    </div>
   </header>
 );
 
