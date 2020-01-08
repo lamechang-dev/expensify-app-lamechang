@@ -15,7 +15,7 @@ export class AddExpensePage extends React.Component {
             // dispatch action
             // redirect
             this.props.startAddExpense(expense);
-            this.props.history.push("/");
+            this.props.history.push("/dashboard");
           }}
         />
       </div>
