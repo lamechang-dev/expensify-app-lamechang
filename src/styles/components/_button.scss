@@ -2,7 +2,20 @@
   background-color: $blue;
   color: white;
   border: none;
+  display: inline-block;
   font-size: $font-size-large;
   font-weight: 300;
+  line-height: 1;
   padding: $s-size;
+  text-decoration: none;
+}
+
+.button--link {
+  background: none;
+}
+
+.button--secondary {
+  @extend .button;
+  background: #888888;
+  display: inline-block;
 }
