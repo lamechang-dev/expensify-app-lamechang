@@ -1,8 +1,5 @@
-// VisibilityToggle -render, constructor(bind)
-// vvisibility -> false
-
-class VisibilityToggle extends React.Component{
-    constructor(props){
+class VisibilityToggle extends React.Component {
+    constructor(props) {
         super(props);
         this.onShowDetail = this.onShowDetail.bind(this);
         this.state = {
@@ -13,21 +10,23 @@ class VisibilityToggle extends React.Component{
             buttonText: "Show Details"
         };
     }
-    onShowDetail(){
+    onShowDetail() {
 
-        if(this.state.visibility){this.setState({
-            visibility: false,
-            buttonText: "Show Details"
-        })}
-        else{
+        if (this.state.visibility) {
+            this.setState({
+                visibility: false,
+                buttonText: "Show Details"
+            })
+        }
+        else {
             this.setState({
                 visibility: true,
                 buttonText: "Hide Details"
             })
         }
     }
-    render(){
-        return(
+    render() {
+        return (
             <div>
                 <h1>{this.state.title}</h1>
                 <button onClick={this.onShowDetail}>{this.state.buttonText}</button>
@@ -67,7 +66,7 @@ const onShowDetail = () =>{
 
 //renderメソッドを定義
 //表示するJSXのtemplateを動的に更新して、それをReactDOM.renderで再表示
-const render = () => { 
+const render = () => {
     const template = (
         <div>
           <h1>{app.title}</h1>
